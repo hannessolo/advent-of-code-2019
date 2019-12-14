@@ -10,6 +10,7 @@ object Day2 {
     // Do the update as required by spec
     val prog = in.updated(1, 12).updated(2, 2)
     println(execute(prog, 0))
+    println(bruteForceProgram(19690720, in))
   }
 
   /**
@@ -53,5 +54,20 @@ object Day2 {
       case 99 => prog.head
       case _ => throw new RuntimeException("Unknown Opcode!" + opcode)
     }
+  }
+
+  val bruteForceProgram: (Int, Program) => (Int, Int) = (target, prog)=> {
+    var output = (-1, -1)
+    for (noun <- 0 to 99) {
+      for (verb <- 0 to 99) {
+        // Do the update as required by spec
+        val run = prog.updated(1, noun).updated(2, verb)
+        val res = execute(run, 0)
+        if (res == target) {
+          output = (noun, verb)
+        }
+      }
+    }
+    output
   }
 }
