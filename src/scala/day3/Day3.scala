@@ -6,13 +6,9 @@ import scala.io.Source
 
 object Day3 {
 
-  trait LargeInitialHashMap[A, B] extends mutable.HashMap[A, B] {
-    override def initialSize: Int = 20000
-  }
-
   def main(args: Array[String]): Unit = {
     val (firstPath, secondPath) = loadInput()
-    val pointTable = new mutable.HashMap[(Int, Int), Int]() with LargeInitialHashMap[(Int, Int), Int]
+    val pointTable = new mutable.HashMap[(Int, Int), Int]()
     // Store position, total wire length
     val candidates = new mutable.HashSet[(Int, Int, Int)]()
 

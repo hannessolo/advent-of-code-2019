@@ -12,7 +12,7 @@ object Day4 {
       .filter(el => {
       var hasOnlyIncreasing = true
       var previousDigit = el / Math.pow(10, 5).asInstanceOf[Int] % 10
-      for (i <- 4 to 0) {
+      for (i <- 4 to 0 by -1) {
         val currentDigit = (el / Math.pow(10, i).asInstanceOf[Int]) % 10
         if (currentDigit < previousDigit) {
           hasOnlyIncreasing = false
